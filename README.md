@@ -68,6 +68,10 @@ sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
 sh Q_branch_diff.sh;
 ```
 
+The M1 merge after script 2 runs shows that it will do a standard full merge if there are only build changes to be merged, reducing commits in the commit log.
+
 The M1 merge after script 3 runs shows that it will not create a merge commit if there are no changes in the build folder.
 
-The M2 merge after script 2 runs shows that it will do a standard full merge if there are only build changes to be merged, reducing commits in the commit log.
+The M1 merge after script 4 shows that only the build changes get merged.
+
+The M2 merge after script 4 shows that the full merge will complete a full merge if a build merge has already been done.
