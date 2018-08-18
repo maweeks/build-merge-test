@@ -6,5 +6,4 @@ cd ../temp_git
 
 echo "STATE: merge develop to master"
 git checkout master
-git merge develop
-git diff master..develop
+git merge develop --no-edit
