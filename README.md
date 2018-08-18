@@ -52,10 +52,20 @@ Run `Q_branch_diff.sh` to show the difference between the develop and master bra
 sh 0_reset.sh;
 sh 1_setup_git_repo.sh; sleep 1;
 sh 2_commit_to_build.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
 sh 3_commit_to_code.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
 sh 4_commit_to_both.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1;
-sh M2_merge_all.sh;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh 2_commit_to_build.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh 3_commit_to_code.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh 4_commit_to_both.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
 sh Q_branch_diff.sh;
 ```
+
+The M1 merge after script 3 runs shows that it will not create a merge commit if there are no changes in the build folder.
+
+The M2 merge after script 2 runs shows that it will do a standard full merge if there are only build changes to be merged, reducing commits in the commit log.
