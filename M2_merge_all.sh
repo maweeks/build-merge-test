@@ -5,5 +5,6 @@ echo "------------------------"
 cd ../temp_git
 
 echo "STATE: merge develop to master"
+commitId=$(git rev-parse develop)
 git checkout master
-git merge develop --no-edit
+git merge $commitId --no-edit -m "Merge commit '$commitId'"
