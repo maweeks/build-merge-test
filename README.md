@@ -46,6 +46,8 @@ Run either `M1_merge_build.sh` or `M2_merge_all.sh` to merge some / all of the d
 
 Run `Q_branch_diff.sh` to show the difference between the develop and master branches.
 
+Run `0_reset.sh` again if you want to wipe the test directory.
+
 ## Example run
 
 ```bash
