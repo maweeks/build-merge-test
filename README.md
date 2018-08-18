@@ -32,6 +32,10 @@ Merges the build folder from the develop branch to the master branch.
 
 Merges the whole develop branch to the master branch.
 
+### Q_branch_diff.sh
+
+Show differences between develop and master branch.
+
 ## Running order
 
 Run `0_reset.sh` followed by `1_setup_git_repo.sh` to set up the prerequisites for the project.
@@ -39,3 +43,19 @@ Run `0_reset.sh` followed by `1_setup_git_repo.sh` to set up the prerequisites f
 Run `2_commit_to_build.sh`, `3_commit_to_code.sh` or  `4_commit_to_both.sh`, or any combination of them together.
 
 Run either `M1_merge_build.sh` or `M2_merge_all.sh` to merge some / all of the develop branch to master.
+
+Run `Q_branch_diff.sh` to show the difference between the develop and master branches.
+
+## Example run
+
+```bash
+sh 0_reset.sh;
+sh 1_setup_git_repo.sh; sleep 1;
+sh 2_commit_to_build.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1;
+sh 3_commit_to_code.sh; sleep 1;
+sh 4_commit_to_both.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1;
+sh M2_merge_all.sh;
+sh Q_branch_diff.sh;
+```
