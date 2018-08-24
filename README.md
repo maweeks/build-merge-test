@@ -54,18 +54,17 @@ Run `0_reset.sh` again if you want to wipe the test directory.
 sh 0_reset.sh;
 sh 1_setup_git_repo.sh; sleep 1;
 sh 2_commit_to_build.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M3_merge_all.sh; sleep 1;
 sh 3_commit_to_code.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M3_merge_all.sh; sleep 1;
 sh 4_commit_to_both.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M3_merge_all.sh; sleep 1;
 sh 2_commit_to_build.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M3_merge_all.sh; sleep 1;
 sh 3_commit_to_code.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M3_merge_all.sh; sleep 1;
 sh 4_commit_to_both.sh; sleep 1;
-sh M1_merge_build.sh; sleep 1; sh M2_merge_all.sh; sleep 1;
-sh Q_branch_diff.sh;
+sh M1_merge_build.sh; sleep 1; sh M3_merge_all.sh; sleep 1;
 ```
 
 The M1 merge after script 2 runs shows that it will do a standard full merge if there are only build changes to be merged, reducing commits in the commit log.
@@ -75,3 +74,32 @@ The M1 merge after script 3 runs shows that it will not create a merge commit if
 The M1 merge after script 4 shows that only the build changes get merged.
 
 The M2 merge after script 4 shows that the full merge will complete a full merge if a build merge has already been done.
+
+```bash
+sh 0_reset.sh;
+sh 1_setup_git_repo.sh; sleep 1;
+sh 2_commit_to_build.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_not_build.sh; sleep 1;
+sh 3_commit_to_code.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_not_build.sh; sleep 1;
+sh 4_commit_to_both.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_not_build.sh; sleep 1;
+sh 2_commit_to_build.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_not_build.sh; sleep 1;
+sh 3_commit_to_code.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_not_build.sh; sleep 1;
+sh 4_commit_to_both.sh; sleep 1;
+sh M1_merge_build.sh; sleep 1; sh M2_merge_not_build.sh; sleep 1;
+sh 2_commit_to_build.sh; sleep 1;
+sh M2_merge_not_build.sh; sleep 1; sh M1_merge_build.sh; sleep 1;
+sh 3_commit_to_code.sh; sleep 1;
+sh M2_merge_not_build.sh; sleep 1; sh M1_merge_build.sh; sleep 1;
+sh 4_commit_to_both.sh; sleep 1;
+sh M2_merge_not_build.sh; sleep 1; sh M1_merge_build.sh; sleep 1;
+sh 2_commit_to_build.sh; sleep 1;
+sh M2_merge_not_build.sh; sleep 1; sh M1_merge_build.sh; sleep 1;
+sh 3_commit_to_code.sh; sleep 1;
+sh M2_merge_not_build.sh; sleep 1; sh M1_merge_build.sh; sleep 1;
+sh 4_commit_to_both.sh; sleep 1;
+sh M2_merge_not_build.sh; sleep 1; sh M1_merge_build.sh; sleep 1;
+```
