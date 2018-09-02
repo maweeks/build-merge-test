@@ -13,9 +13,8 @@ git checkout master
 diffAll=$(git diff master..$commitId ./)
 diffBuild=$(git diff master..$commitId ./build)
 if [ "$diffBuild" = "" ] && [ "$commitId" != "$commitIdMaster" ]; then
-    echo "STATE: ID merge"
+    echo "STATE: Full merge"
     output=$(git merge $commitId --no-edit -m "Merge all other '$commitId'" | grep "Merge made")
-    echo "$output"
     if [[ $output != "" ]]; then
         echo "otherALL" >> ../actual
     fi
