@@ -7,6 +7,8 @@ cd ../temp_git
 echo "STATE: make content"
 git checkout develop
 echo "Commit to build" > build/build.txt
+date +%Y-%m-%d.%H:%M:%S >> build/build.txt
+ls */
 
 echo "STATE: commit to git"
 git add .
